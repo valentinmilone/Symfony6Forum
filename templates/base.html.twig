@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}
+         Milone
+        {% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{asset('css/stylesheet.css')}}">
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+        {% endblock %}
+
+        
+    </head>
+    <body>
+        {% block body %}
+        <nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="{{path ('dashboard')}}"><svg width="30" height="30" viewBox="0 0 1536 1536" xmlns="http://www.w3.org/2000/svg">
+    <path class="icono-foro" d="M934 22Q617 143 378 384.5T20 945Q0 856 0 769q0-208 102.5-384.5t278.5-279T765 3q82 0 169 19zm269 119q93 65 164 155q-389 113-674.5 400.5T296 1373q-93-72-155-162q112-386 395-671t667-399zM470 1475q115-356 379.5-622T1469 469q40 92 54 195q-292 120-516 345t-343 518q-103-14-194-52zm1066 58q-193-50-367-115q-135 84-290 107q109-205 274-370.5T1522 879q-21 152-101 284q65 175 115 370z"/>
+</svg></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{path ('RegistrarPosts')}}">Crear Post </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path ('MisPosts')}}">Mis Posts</a>
+      </li>
+      
+      
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2 barra-navegacion" type="search" placeholder="Busca en Milone" aria-label="Search">
+    <button class="btn btn-success my-2 my-sm-0 barra-navegacion" type="submit">Buscar</button>
+</form> 
+  </div>
+</nav>
+        {% endblock %}
+
+        {% block javascripts %}
+<script src ="{{asset('css/bootstrap.min.js')}}"></script>  
+<script src ="{{asset('css/jquery.min.js')}}"></script>  
+       {% endblock %}
+    </body>
+</html>

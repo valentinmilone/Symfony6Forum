@@ -1,0 +1,139 @@
+:root{
+    --primary-color:hsl(96, 56%, 2%);
+    --text-color:#7f71ff;
+    --bg-color: hsl(0,0%,90%);
+    --bg-card-color: hsl(0,0%,98%);
+    --border-radius: 0.4em;
+    --transition: color 0.1s, background-color 0.2s ease-in-out;
+}
+
+@font-face {
+    font-family: 'signikabold';
+    src: url('../fonts/signika-bold-webfont.woff2') format('woff2'),
+        url('../fonts/signika-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'signikaregular';
+    src: url('../fonts/signika-regular-webfont.woff2') format('woff2'),
+        url('../fonts/signika-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'remachine_script_personal_uRg';
+    src: url('../fonts/remachinescript_personal_use-webfont.woff2') format('woff2'),
+        url('../fonts/remachinescript_personal_use-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.barra-navegacion{
+    color: var(--text-color) !important; 
+    background-color: var(--primary-color) !important; 
+    border-color: var(--text-color) !important;
+}
+
+.icono-foro{
+    width: 20px; /* Ajusta este valor según el tamaño deseado */
+    height: 20px; /* Ajusta este valor según el tamaño deseado */
+    fill: var(--text-color); /* Cambia el color de relleno del ícono según tus preferencias */
+    margin-right: 5px; /* Opcional: ajusta el margen derecho para separar el ícono del texto */
+}
+
+.icono{
+    fill: var(--text-color);
+}
+
+body {
+    background-image: url("../img/UI.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    font-family: signikaregular;
+
+
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: sans-serif ;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.navbar {
+    background-color: var(--primary-color) !important;
+    font-family: sans-serif;
+    font-size: 1.5em;
+}
+
+.navbar-brand {
+    font-family: sans-serif;
+    font-size: 2em;
+    color: var(--text-color) !important;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+}
+
+.fa-user,
+.bg-yellow {
+    color: var(--text-color);
+    font-size: 1.3em;
+}
+
+.fa-clock,
+.bg-green {
+    color: #c3f584;
+    font-size: 1.3em;
+}
+
+.cursor:hover {
+    cursor: pointer;
+}
+
+/* Personalización de los botones del Paginator */
+.pagination .page-item {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.pagination .page-item .page-link {
+    color: var(--primary-color);
+    /* Color del texto del botón */
+    background-color: #fff;
+    /* Color de fondo del botón */
+    border: 1px solid var(--primary-color);
+    /* Borde del botón */
+    padding: 6px 12px;
+    /* Espaciado interno del botón */
+    border-radius: 5px;
+    /* Radio de los bordes del botón */
+}
+
+/* Estilo para el botón de página activa */
+.pagination .page-item.active .page-link {
+    background-color: var(--primary-color);
+    /* Color de fondo del botón activo */
+    color: #fff;
+    /* Color del texto del botón activo */
+}
+
+.post-header {
+    margin-bottom: 20px;
+}
+
+.post-info {
+    color: var(--text-color);
+}
