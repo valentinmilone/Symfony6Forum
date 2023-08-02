@@ -14,6 +14,7 @@ use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 //use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 
@@ -82,20 +83,23 @@ class PostsController extends AbstractController
             $posts = $entityManager->getRepository(Posts::class)->findBy(['user'=>$user]);
             return $this->render('posts/MisPosts.html.twig',['posts'=>$posts]);
         }
+         /**
+     * @Route("/Likes", options={"expose"=true}, name="Likes")
+     */
         #[Route('/Likes', options: ['expose' => true], name: 'Likes')]
-        public function Like(Request $request, PersistenceManagerRegistry $doctrine){
+        public function Like(Request $request){
             if($request->isXmlHttpRequest()){
-                $entityManager = $doctrine->getManager();
+                $em = $this->getDoctrine()->getManager();
                 $user = $this->getUser();
-                $id = $request->request->get(key: 'id');
-                $post = $entityManager->getRepository(Posts::class)->find($id);
+                $id = $request->request->get('id');
+                $post = $em->getRepository(Posts::class)->find($id);
                 $likes = $post->getLikes();
-                $likes .= $user->getId(). ',';
+                $likes .= $user->getId().',';
                 $post->setLikes($likes);
-                $entityManager->flush();
-                return new JsonResponse(['likes' => $likes]);
+                $em->flush();
+                return new JsonResponse(['likes'=>$likes]);
             }else{
-                throw new \Exception(message: 'estas tratando de hackearme?' );
+                throw new \Exception('Estás tratando de hackearme?');
             }
         }
 }

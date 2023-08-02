@@ -32,6 +32,18 @@
 
 }
 
+.font-color{
+    color:var(--text-color)
+}
+
+.form-signin {
+    max-width: 400px;
+    margin: 100px auto;
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px; /* Espacio interno para el contenido del formulario */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
 .barra-navegacion{
     color: var(--text-color) !important; 
     background-color: var(--primary-color) !important; 
@@ -137,3 +149,26 @@ h6 {
 .post-info {
     color: var(--text-color);
 }
+
+.sing-in-button{
+    color:var(--text-color)!important;
+    margin: 10px!important;
+    border-radius: 0.8rem !important;
+    background-color: #fff!important;
+    border-color: var(--text-color)!important;
+    font-size: 1.1rem !important;
+    transition: border-width 1s ease-in-out; /* Agregamos la animación de transición */
+}
+
+/* Agregamos estilos cuando el mouse está encima del botón */
+.sing-in-button:hover {
+    border-width: 0.2rem!important;
+}
+
+
+
+
+
+
+
+
