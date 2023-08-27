@@ -4,6 +4,7 @@ namespace App\Controller;
 //use App\Repository;
 
 use App\Entity\Posts;
+use App\Entity\Comentarios;
 use App\Form\PostsType;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -71,23 +72,28 @@ class PostsController extends AbstractController
     
     #[Route('/post/{id}', name: 'VerPosts')]
         public function VerPost($id,PersistenceManagerRegistry $doctrine){
+            $user = $this->getUser();
             $entityManager = $doctrine->getManager();
             $post = $entityManager->getRepository(Posts::class)->find($id);
-            return $this->render('posts/verPost.html.twig',['post'=>$post]);
+            $comentarios = $entityManager->getRepository(Comentarios::class)->findBy(['posts' => $post]);
+            $likesDeEstePost = explode(',', $post->getLikes()); // Convertir los likes en un array
+            return $this->render('posts/verPost.html.twig',[
+                'post'=>$post,
+                'likesDeEstePost' => $likesDeEstePost,
+                'comentarios'=> $comentarios]);
         }
 
         #[Route('/mis-posts', name: 'MisPosts')]
         public function MisPosts(PersistenceManagerRegistry $doctrine){
             $entityManager = $doctrine->getManager();
             $user = $this->getUser();
+            $user = $this->getUser();
             $posts = $entityManager->getRepository(Posts::class)->findBy(['user'=>$user]);
             return $this->render('posts/MisPosts.html.twig',['posts'=>$posts]);
         }
-         /**
-     * @Route("/Likes", options={"expose"=true}, name="Likes")
-     */
+         
         #[Route('/Likes', options: ['expose' => true], name: 'Likes')]
-        public function Like(Request $request){
+        public function Like(Request $request, PersistenceManagerRegistry $doctrine){
             if($request->isXmlHttpRequest()){
                 $em = $this->getDoctrine()->getManager();
                 $user = $this->getUser();

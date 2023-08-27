@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-8 cursor">
                 {% for post in pagination %}
-                    <div class="bg-white rounded p-3 my-3" onclick="window.location.href='{{ path('VerPosts', {id: post.id}) }}'">
+                    <div class="bg-white rounded p-3 my-3">
                         <div class="d-flex bd-highlight">
                             <div class="p-2 flex-grow-1 bd-highlight">
                                 <div class="post-header">
@@ -26,16 +26,20 @@
                                                 </svg>
                                             </svg>
                                         </div>
-                                        <strong class="post-info">{{ post.name }}</strong> - {{ post.fecha_publicacion | date }}
+                                            <strong>{{ post.name }}</strong>
+                                        </a>
+                                        - {{ post.fecha_publicacion | date }}
                                     </div>
                                 </div>
                                 <div class="p-2 bd-highlight">
-                                    <h5>{{ post.titulo }}</h5>
+                                    <h5>
+                                        <a href="{{ path('VerPosts', {id: post.id}) }}">{{ post.titulo }}</a>
+                                    </h5>
                                     <div class="align-self-center">
                                         <p>{{ post.contenido }}</p>
                                     </div>
                                 </div>
-                                    <div class="align-self-center">
+                                <div class="align-self-center">
                                     <img class="rounded" src="{{ asset('uploads/photos/' ~ post.foto) }}" width="150px">
                                 </div>
                             </div>
@@ -43,26 +47,21 @@
                     </div>
                 {% endfor %}
             </div>
-                 <div class="col-md-4">
+            <div class="col-md-4">
                 <div class="bg-white rounded p-3 my-3">
-                    <!-- Contenedor para el botón y el h4 -->
                     <div class="d-flex align-items-center mb-3">
-                        <!-- Botón SVG -->
-                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path class="icono" d="M12 2A10 10 0 0 0 2 12a9.89 9.89 0 0 0 2.26 6.33l-2 2a1 1 0 0 0-.21 1.09A1 1 0 0 0 3 22h9a10 10 0 0 0 0-20Zm0 18H5.41l.93-.93a1 1 0 0 0 0-1.41A8 8 0 1 1 12 20Z"/>
-                        </svg>
-                        <!-- h4 Comentarios -->
+                        <i class="fa fa-comments"></i>
                         <h4 class="ml-2">Tus comentarios</h4>
                     </div>
                     <ul>
                         {% for comentario in comentarios %}
-                            <strong>{{ comentario.comentario }}</strong> - {{comentario.fechapublicacion | date }}
+                            <strong>{{ comentario.comentario }}</strong> - {{ comentario.fechapublicacion | date }}
                         {% endfor %}
                     </ul>
                 </div>
             </div>
-            </div>
         </div>
+    </div>
     <div class="d-flex justify-content-center">
         <div class="navigation">
             {{ knp_pagination_render(pagination) }}

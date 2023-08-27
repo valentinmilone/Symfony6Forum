@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\User;
+use App\Entity\Comentarios;
 use App\Repository\PostsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -41,7 +42,6 @@ class Posts
     {
         $this->likes='';
         $this->fecha_publicacion= new DateTime();
-
     }
 
     public function getId(): ?int
@@ -109,17 +109,11 @@ class Posts
         return $this;
     }
 
-    public function getComentarios(): ?string
+    public function getComentarios()
     {
-        return $this->contenido;
-    }
-
-    public function setComentarios(string $comentarios): self
-    {
-        $this->comentario = $comentarios;
-
-        return $this;
-    }
+        return $this->comentarios;
+    }    
+    
 
     public function getUser(): ?string
     {
